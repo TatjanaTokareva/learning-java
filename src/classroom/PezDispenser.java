@@ -23,7 +23,6 @@ public class PezDispenser {
     }
 
     //getter
-
     public String getModelName() {
         return modelName;
     }
@@ -53,35 +52,50 @@ public class PezDispenser {
     //1. Take only 1 candy
     public void giveOne() {
         if (getCurrentAmtCandy() <= 0) {
-            System.out.println("Not enough candy! Please refill");
+            System.out.println("No more candies! Please refill");
         } else {
             currentAmtCandy--;
             System.out.println("One candy dispensed. Candies left: " + getCurrentAmtCandy());
         }
     }
-    //2. Take more candies
 
-    public void giveMore(int number) {
-        if (number <= getCurrentAmtCandy()) {
-            currentAmtCandy = currentAmtCandy - number;
-            System.out.println(number + " candies dispensed. Candies left: " + getCurrentAmtCandy());
+    //2. Load one candy
+    public void loadOne() {
+        if (currentAmtCandy == maxCapacity) {
+            System.out.println("Dispenser is full");
         } else {
-            if (number >= getCurrentAmtCandy()) {
-                System.out.println("Not enough candies to dispense. Please load candies");
+            currentAmtCandy = currentAmtCandy + 1;
+            System.out.println("One candy loaded, candies now: " + getCurrentAmtCandy());
+        }
+    }
+
+    //3. Take (n) candies
+    public void giveMore(int numberGive) {
+        if (numberGive > maxCapacity) {
+            System.out.println("Cant take candies greater than max = " + maxCapacity);
+        } else {
+            if (currentAmtCandy - numberGive < 0) {
+                currentAmtCandy=0;
+                System.out.println("No more candies, please refill");
+            } else {
+                currentAmtCandy = currentAmtCandy - numberGive;
+                System.out.println(numberGive + " candies dispensed. Candies left: " + getCurrentAmtCandy());
+                ;
             }
         }
     }
 
-    //3. Load 1 candie
-    public void loadOne(int loadNumber) {
-        if (loadNumber >= maxCapacity) {
-            System.out.println("Dispenser fully loaded. Candies: " + getCurrentAmtCandy());
+    //4. Load (n) candies
+    public void loadMore(int numberLoad) {
+        if (numberLoad > maxCapacity) {
+            System.out.println("Cant load candies greater than max = " + maxCapacity);
         } else {
-            if (currentAmtCandy <= maxCapacity) {
-                currentAmtCandy ++;
-                System.out.println(loadNumber + " candy loaded. Candies now:" + getCurrentAmtCandy());
+            if (currentAmtCandy + numberLoad >= 10) {
+                System.out.println("Dispenser is full, cant load more");
+            } else {
+                currentAmtCandy = currentAmtCandy + numberLoad;
+                System.out.println(numberLoad + " candies loaded, candies now: " + getCurrentAmtCandy());
             }
-
         }
     }
 }
