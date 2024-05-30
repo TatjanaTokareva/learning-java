@@ -4,6 +4,10 @@ public class PlayPezDispenser {
     public static void main(String[] args) {
         PezDispenser dispenser = new PezDispenser("Mario", "Black", "xp1");
         System.out.println(dispenser);
+        System.out.println(dispenser.getModelName());
+        System.out.println(dispenser.getColor());
+        System.out.println(dispenser.getSerie());
+        System.out.println(dispenser.getCurrentAmtCandy());
 
         //try with 1 candy getting (cant get more than 10 candies)
         dispenser.giveOne();
@@ -17,6 +21,7 @@ public class PlayPezDispenser {
         dispenser.giveOne();
         dispenser.giveOne();
         dispenser.giveOne();
+
 
         //Try with 1 candy loading (cant load more than 10 candies)
         dispenser.loadOne();
@@ -37,6 +42,7 @@ public class PlayPezDispenser {
         // Try to take (n) candies: can't take more than max = 10
         dispenser.giveMore(5);
         dispenser.giveMore(6);
+        System.out.println("Candies now: " + dispenser.getCurrentAmtCandy());
 
         //Try to load more than max candies,Try to take (n) candies:
         dispenser.loadMore(13);
@@ -45,6 +51,7 @@ public class PlayPezDispenser {
         dispenser.loadMore(4);
         dispenser.loadMore(4);
         dispenser.loadMore(4);
+        System.out.println("Candies now: " + dispenser.getCurrentAmtCandy());
 
     }
 }

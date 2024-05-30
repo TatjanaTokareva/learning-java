@@ -80,7 +80,6 @@ public class PezDispenser {
             } else {
                 currentAmtCandy = currentAmtCandy - numberGive;
                 System.out.println(numberGive + " candies dispensed. Candies left: " + getCurrentAmtCandy());
-                ;
             }
         }
     }
